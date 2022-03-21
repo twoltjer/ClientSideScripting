@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="i-really-dislike-users.css" rel="stylesheet" type="text/css" />
+    <title>Button</title>
+</head>
+
+<body>
+    <button>Click me, if you can!</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").hover(function () {
+                var heightPosMultiplier = Math.random();
+                var widthPosMultiplier = Math.random();
+                var topProperty = "calc((100% - 4rem) * " + heightPosMultiplier + ")";
+                var leftProperty = "calc((100% - 12rem) * " + widthPosMultiplier + ")";
+                ($(this)).css("top", topProperty);
+                ($(this)).css("left", leftProperty);
+            });
+        });
+    </script>
+</body>
+
+</html>

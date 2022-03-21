@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Datagrid</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>First Name</th>
+                <th>Location</th>
+                <th>Delete Row</th>
+            </tr>
+        </thead>
+        <tbody id="datagrid">
+        </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            class Person {
+                constructor(id, fname, lname, location) {
+                    this.id = id;
+                    this.fname = fname;
+                    this.lname = lname;
+                    this.location = location;
+                }
+
+                createRowHtml() {
+                    return ("<tr><td>" +
+                        this.id +
+                        "</td><td>" +
+                        this.fname +
+                        "</td><td>" +
+                        this.lname +
+                        "</td><td>" +
+                        this.location +
+                        "</td><td><button>Delete</td></tr>");
+                }
+            }
+
+            var people = [
+                new Person(1, "George", "Washington", "Virginia"),
+                new Person(2, "John", "Adams", "Massachusetts"),
+                new Person(3, "Winston", "Churchill", "U.K."),
+                new Person(4, "Thomas", "Edison", "New Jersey"),
+                new Person(5, "Abe", "Lincoln", "Illinois")
+            ];
+
+            $.each(people, function (index, value) {
+                $("#datagrid").append(value.createRowHtml());
+            });
+
+            $("button").click(function () {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+</body>
+
+</html>
